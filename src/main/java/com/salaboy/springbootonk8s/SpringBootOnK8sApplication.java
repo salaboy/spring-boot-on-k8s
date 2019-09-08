@@ -37,18 +37,21 @@ public class SpringBootOnK8sApplication implements CommandLineRunner {
     @Autowired
     private CustomBean customBeanPerEnvironment;
 
+    private String helloMessage;
+
     @Override
     public void run(String... args) throws Exception {
         logger.info("> Application Started!");
-        logger.info("\t> Hello from: " + myConfigurationValue);
-        logger.info("\t> @ConfigurationProperties - k8s String: " + k8sProperties.getMyK8sStringValue());
-        logger.info("\t> @ConfigurationProperties - k8s Boolean: " + k8sProperties.isMyK8sBooleanValue());
-        logger.info("\t> CustomBean" + customBeanPerEnvironment);
+        helloMessage = ="Hello from: " + myConfigurationValue + " \n" +
+                "\t> @ConfigurationProperties - k8s String: " + k8sProperties.getMyK8sStringValue() + " \n" +
+                "\t> @ConfigurationProperties - k8s Boolean: " + k8sProperties.isMyK8sBooleanValue() + " \n" +
+                "\t> CustomBean" + customBeanPerEnvironment + " \n" +;
+        logger.info(helloMessage);
     }
 
-    @GetMapping("/hello")
+    @GetMapping("")
     public String sayHelloBasedOnConfig() {
-        return "Hello from: " + myConfigurationValue;
+        return helloMessage;
     }
 }
 
