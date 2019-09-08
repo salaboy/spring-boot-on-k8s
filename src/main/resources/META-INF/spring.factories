@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.salaboy.springbootonk8s.KubernetesOnlyAutoConfiguration,\
+com.salaboy.springbootonk8s.DevAutoConfiguration
